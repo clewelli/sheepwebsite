@@ -6,7 +6,7 @@ var db=new sqlite3.DATABASE('./project.db',sqlite3.OPEN_READWRITE | sqlite3.OPEN
 	}
 	console.log('Connected to sqlite database');//comment out later
 });
-db.run ("CREATE TABLE IF NOT EXISTS users(" + "password varchar(50) NOT NULL," + "games INTEGER," + "wins INTEGER;",
+db.run ("CREATE TABLE IF NOT EXISTS users("+ "name varchar(50) NOT NULL" + "password varchar(50) NOT NULL," + "games INTEGER," + "wins INTEGER;",
   function(err) {
 	if (err){
 		throw err;

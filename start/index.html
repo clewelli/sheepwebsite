@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta name="viewport" content="width-device-width, initial-scale=1">
+<style>
+
+.modal {
+	display: none;
+    position: static;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 400px;
+    height: 150px;
+    overflow: auto;
+    background-color:rgb(30,190,0);
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+<img src="logo.jpg"><br>
+<button onclick="document.getElementById('id01').style.display='block'"
+style="width:auto;">Logon to begin playing!</button>
+
+<div id="id01" class="modal">
+
+  <form>
+        Username: <input type="text" name="username"><br>
+        Password: <input type="text" name="password"><br>
+        <input type="submit" value="Login">
+  </form>
+  <button   onclick="document.getElementById('id01').style.display='none'"
+  style="width:auto;">Close</button> 
+</div>
+
+<p>Not a user?</p>
+<button onclick="document.getElementById('id02').style.display='block'"
+style="width:auto;">Create Account</button>
+
+<div id="id02" class="modal">
+
+  <form>
+        Username: <input type="text" name="username"><br>
+        Password: <input type="text" name="password"><br>
+        <input type="submit" value="Create Account">
+  </form>
+  <button   onclick="document.getElementById('id02').style.display='none'"
+  style="width:auto;">Close</button> 
+</div>
+
+
+<script>
+  var modal1=document.getElementById('id01');
+  var modal2=document.getElementById('id02');
+  window.onclick = function(event){
+    if (event.target == modal1){
+    	modal1.style.display="none";
+    } else if (event.target==modal2){
+    	modal2.style.display="none";
+    }
+  }
+</script>
+<p>testing</p>
+</body>
+</html>
