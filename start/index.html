@@ -23,17 +23,23 @@ body{
     padding-right: 10px;
     padding-bottom: 10px;
 }
+.screen {
+	background-color: rgb(211,211,211);
+	width: 600px;
+	height:350px;
+}
 </style>
 </head>
 
 <body>
-<img src="logo.png" style="width:450px;height:250px;"><br>
+<img src="logo.png" style="width:450px;height:250px;"></img><br>
+
 <button onclick="document.getElementById('id01').style.display='block'"
 style="width:auto;">Logon to begin playing!</button>
 
 <div id="id01" class="modal">
 
-  <form>
+  <form action="user.php" method="get">
         Username: <input type="text" name="username"><br>
         Password: <input type="text" name="password"><br>
         <input type="submit" value="Login">
@@ -55,7 +61,7 @@ style="width:auto;">Create New Account</button>
         <input type="submit" value="Create Account">
   </form>
   <button   onclick="document.getElementById('id02').style.display='none'"
-  style="width:auto;">Close</button> 
+  style="width:auto;">Close</button>
 </div>
 
 
@@ -70,6 +76,8 @@ style="width:auto;">Create New Account</button>
     }
   }
 </script>
-<p>testing</p>
+<div id="video" class="screen">
+	<br><img src=http://10.186.95.232:8080/?action=stream" alt="Sorry, the sheep appear to be sleeping now, no games at this time" width=450px height=250px" ></img>
+</div>
 </body>
 </html>
