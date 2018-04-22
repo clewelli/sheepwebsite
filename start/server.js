@@ -28,30 +28,25 @@ app.use('/api1', express.static(__dirname + '/session2/bb/'));
 //they can ask for `static/critical.js` and get `app/important/critical.js`, but
 //a hacker wouldn’t know the file path to actually get the file if they got mischievous
 
-router.route("/something/arbitrary/")
-    .get(function(req, res) { // GET requests respond with Hello World
-        res.send("Sending Hello World!");
-        //res.json({ message: 'Hello World!' }); // Turns structures into a string
-        // JavaScript Object Notation
-        // Can be parsed out by more than JavaScript (Python, etc)
-    });
-
 router.route("/get/")
     .get(function(req, res) { // GET requests respond with Hello World
-        query = "SELECT * FROM users WHERE email = ? AND pswd = ?;"
-        db.all(query, ["me", "1234"], function(err, users) {
+    	var name=req.body.name;
+        query = "SELECT * FROM users WHERE username = ?;"
+        db.run(query, [name], function(err, entry) {
             if (err) {
                 console.log(err.message);
                 res.send("Error finding specified user");
             }
-            res.send(users);
+            res.json(entry);
         });
     });
 
 router.route("/post/")
     .get(function(req, res) { // GET requests respond with Hello World
-        db.run("INSERT INTO users(email, pswd) VALUES (?,?);", ["me", "1234"], function(err) {
-            if (err) {
+    	var name = req.body.name;
+    	var password= req.body.password;
+        db.run("INSERT INTO users(name, password, games, wins) VALUES (?,?,?,?);", [name, password,0,0], function(err) {
+        	if (err) {
                 console.log("User already exists...");
                 res.send("User already exists...");
             } else {

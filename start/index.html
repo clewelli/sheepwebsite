@@ -1,6 +1,14 @@
 <html>
 <head>
-<meta name="viewport" content="width-device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.0/sjcl.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="http://getbootstrap.com.vn/examples/equal-height-columns/equal-height-columns.css" />
+    <script type="text/javascript" src="index.js"></script>
+</head>
+
+<!--<meta name="viewport" content="width-device, initial-scale=1">-->
 <style>
 body{
 	background-color: rgb(0,0,0);
@@ -34,40 +42,49 @@ body{
 <body>
 <img src="logo.png" style="width:450px;height:250px;"></img><br>
 
-<button onclick="document.getElementById('id01').style.display='block'"
+<button onclick="document.getElementById('login').style.display='block'"
 style="width:auto;">Logon to begin playing!</button>
 
-<div id="id01" class="modal">
+<div id="login" class="modal">
 
-  <form action="user.php" method="get">
-        Username: <input type="text" name="username"><br>
-        Password: <input type="text" name="password"><br>
-        <input type="submit" value="Login">
-  </form>
-  <button   onclick="document.getElementById('id01').style.display='none'"
+        <p>Username:</p>
+        <input type="text" id="name"><br>
+        <p>Password:</p>
+        <input type="text" id="password"><br>
+        <button   style="width:auto;" id="loginbutton">Login</button> 
+ 
+  <p id="err-msg-bar1"></p>
+  <button   onclick="document.getElementById('login').style.display='none'"
   style="width:auto;">Close</button> 
+</div>
+
+<div id="logout" class="modal">
+   <input type="submit" value="Logout">
+   <p id="userInfo"></p>
 </div>
 
 <p class="ex">Not a user?</p>
 
-<button onclick="document.getElementById('id02').style.display='block'"
+<button onclick="document.getElementById('newaccount').style.display='block'"
 style="width:auto;">Create New Account</button>
 
-<div id="id02" class="modal">
+<div id="newaccount" class="modal">
 
-  <form>
-        Username: <input type="text" name="username"><br>
-        Password: <input type="text" name="password"><br>
-        <input type="submit" value="Create Account">
-  </form>
-  <button   onclick="document.getElementById('id02').style.display='none'"
+   <span>Username:</span>
+        <input type="text" id="namen"><br>
+        <span>Password:</span>
+        <input type="text" id="passwordn"><br>
+ 
+  <button style="width:auto;" id="nabutton">Create Account</button>
+  <p id="err-msg-bar2"></p>
+  <button   onclick="document.getElementById('newaccount').style.display='none'"
   style="width:auto;">Close</button>
 </div>
 
 
 <script>
-  var modal1=document.getElementById('id01');
-  var modal2=document.getElementById('id02');
+  var modal1=document.getElementById('login');
+  var modal2=document.getElementById('newaccount');
   window.onclick = function(event){
     if (event.target == modal1){
     	modal1.style.display="none";
