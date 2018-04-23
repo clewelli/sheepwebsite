@@ -42,7 +42,7 @@ body{
 <body>
 <img src="logo.png" style="width:450px;height:250px;"></img><br>
 
-<button onclick="document.getElementById('login').style.display='block'"
+<button id="outerlogin" onclick="document.getElementById('login').style.display='block'"
 style="width:auto;">Logon to begin playing!</button>
 
 <div id="login" class="modal">
@@ -59,13 +59,13 @@ style="width:auto;">Logon to begin playing!</button>
 </div>
 
 <div id="logout" class="modal">
-   <input type="submit" value="Logout">
    <p id="userInfo"></p>
+   <input type="submit" id="logoutbutton" value=logout>
 </div>
 
 <p class="ex">Not a user?</p>
 
-<button onclick="document.getElementById('newaccount').style.display='block'"
+<button id="outerna" onclick="document.getElementById('newaccount').style.display='block'"
 style="width:auto;">Create New Account</button>
 
 <div id="newaccount" class="modal">
@@ -93,8 +93,42 @@ style="width:auto;">Create New Account</button>
     }
   }
 </script>
-<div id="video" class="screen">
-	<br><img src=http://10.186.95.232:8080/?action=stream" alt="Sorry, the sheep appear to be sleeping now, no games at this time" width=450px height=250px" ></img>
+<div id="videospace" class="screen">
+	<br><img id="video" alt="Sorry, the sheep appear to be sleeping now, no games at this time" width=450px height=250px" ></img>
 </div>
+
+<div id="unity"></div>
+
+ <button style="width:auto;" id="refreshbutton">Refresh Connection</button>
+ 
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#unity").load("unityindex.html");
+<me("*");
+          for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            /*search for elements with a certain atrribute:*/
+            file = elmnt.getAttribute("w3-include-html");
+            if (file) {
+              /*make an HTTP request using the attribute value as the file name:*/
+              xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                  /*remove the attribute, and call this function once more:*/
+                  elmnt.removeAttribute("w3-include-html");
+                  includeHTML();
+                }
+              }
+              xhttp.open("GET", file, true);
+              xhttp.send();
+              /*exit the function:*/
+              return;
+            }
+          }
+        }/script>
+
+ 
 </body>
 </html>
