@@ -13,7 +13,7 @@
 body{
 	background-color: rgb(0,0,0);
  }
- p.ex{
+ .ex{
  	color: rgb(255,255,255);
  }  
 .modal {
@@ -31,6 +31,31 @@ body{
     padding-right: 10px;
     padding-bottom: 10px;
 }
+.game {
+	display: none;
+}
+
+.modal2 {
+	display: none;
+    position: static;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 400px;
+    height: 90px;
+    overflow: auto;
+    background-color:rgb(60,240,0);
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.sidebyside{
+	text-align: left;
+	display: inline-block;
+}
+
 .screen {
 	background-color: rgb(211,211,211);
 	width: 600px;
@@ -47,23 +72,23 @@ style="width:auto;">Logon to begin playing!</button>
 
 <div id="login" class="modal">
 
-        <p>Username:</p>
+        <span>Username:</span>
         <input type="text" id="name"><br>
-        <p>Password:</p>
-        <input type="text" id="password"><br>
+        <span>Password:</span>
+        <input type="password" id="password"><br>
         <button   style="width:auto;" id="loginbutton">Login</button> 
  
   <p id="err-msg-bar1"></p>
   <button   onclick="document.getElementById('login').style.display='none'"
   style="width:auto;">Close</button> 
-</div>
+</div><br>
 
-<div id="logout" class="modal">
+<div id="logout" class="modal2">
    <p id="userInfo"></p>
    <input type="submit" id="logoutbutton" value=logout>
 </div>
 
-<p class="ex">Not a user?</p>
+<p id = notuser class="ex">Not a user?</p>
 
 <button id="outerna" onclick="document.getElementById('newaccount').style.display='block'"
 style="width:auto;">Create New Account</button>
@@ -73,7 +98,7 @@ style="width:auto;">Create New Account</button>
    <span>Username:</span>
         <input type="text" id="namen"><br>
         <span>Password:</span>
-        <input type="text" id="passwordn"><br>
+        <input type="password" id="passwordn"><br>
  
   <button style="width:auto;" id="nabutton">Create Account</button>
   <p id="err-msg-bar2"></p>
@@ -93,42 +118,23 @@ style="width:auto;">Create New Account</button>
     }
   }
 </script>
-<div id="videospace" class="screen">
-	<br><img id="video" alt="Sorry, the sheep appear to be sleeping now, no games at this time" width=450px height=250px" ></img>
-</div>
+<br>
 
-<div id="unity"></div>
+<div class="sidebyside">
+	<div id="videospace" class="screen">
+		<br><img id="video" alt="Sorry, the sheep appear to be sleeping now, no games at this time" width=450px height=250px" ></img>
+	</div>
+	<iframe id ="unity" src="logo.png" class="game";
+style="border:0px #000000 none;" name="Game name" scrolling="no" frameborder="1" marginheight="px"
+ marginwidth="320px" height="320px" width="480px"></iframe>
+</div><br>
 
- <button style="width:auto;" id="refreshbutton">Refresh Connection</button>
+<div id="buttons" class="sidebyside">
+	<button style="width:auto;" id="refreshbutton">Refresh Connection</button>
+	<button style="width:auto;" id="playbutton">Play Game</button>
+	<scan id="cantplay" class="ex"></scan>
+</div> 
  
-<script type="text/javascript">
-$(document).ready(function() {
-    $("#unity").load("unityindex.html");
-<me("*");
-          for (i = 0; i < z.length; i++) {
-            elmnt = z[i];
-            /*search for elements with a certain atrribute:*/
-            file = elmnt.getAttribute("w3-include-html");
-            if (file) {
-              /*make an HTTP request using the attribute value as the file name:*/
-              xhttp = new XMLHttpRequest();
-              xhttp.onreadystatechange = function() {
-                if (this.readyState == 4) {
-                  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-                  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-                  /*remove the attribute, and call this function once more:*/
-                  elmnt.removeAttribute("w3-include-html");
-                  includeHTML();
-                }
-              }
-              xhttp.open("GET", file, true);
-              xhttp.send();
-              /*exit the function:*/
-              return;
-            }
-          }
-        }/script>
-
  
 </body>
 </html>
